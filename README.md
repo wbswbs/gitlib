@@ -3,7 +3,7 @@ Git lib for Gitonomy
 
 [![Build Status](https://secure.travis-ci.org/gitonomy/gitlib.png)](https://travis-ci.org/gitonomy/gitlib)
 
-This branch was forked from teh original repository, to fix the Problems
+This branch was forked from the original repository, to fix the Problems
 with the Symfony Process Versions.  
 
 The Branch ist dev-wbs
