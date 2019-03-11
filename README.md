@@ -8,6 +8,20 @@ with the Symfony Process Versions.
 
 The Branch ist dev-wbs
 
+To load it with composer add
+
+  "repositories": [
+      {
+        "type": "git",
+        "url": "https://github.com/wbswbs/gitlib/"
+      }
+    ],
+    
+and require
+    
+    "gitonomy/gitlib":"dev-dev-wbs",
+
+
 This library provides methods to access Git repository from PHP.
 
 It makes shell calls, which makes it less performant than any solution.
