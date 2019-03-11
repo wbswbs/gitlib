@@ -418,8 +418,9 @@ class Repository
     public function getSize()
     {
         $commandlineArguments = array('du', '-skc', $this->gitDir);
-        $commandline = $this->normalizeCommandlineArguments($commandlineArguments);
-        $process = new Process($commandline);
+//        $commandline = $this->normalizeCommandlineArguments($commandlineArguments);
+        $process = new Process($commandlineArguments);
+        $process->inheritEnvironmentVariables(true);
         $process->run();
 
         if (!preg_match('/(\d+)\s+total$/', trim($process->getOutput()), $vars)) {
@@ -622,12 +623,13 @@ class Repository
         $base[] = $command;
 
         $commandlineArguments = array_merge($base, $args);
-        $commandline = $this->normalizeCommandlineArguments($commandlineArguments);
+//        $commandline = $this->normalizeCommandlineArguments($commandlineArguments);
 
-        $process = new Process($commandline);
+        $process = new Process($commandlineArguments);
         $process->setEnv($this->environmentVariables);
         $process->setTimeout($this->processTimeout);
         $process->setIdleTimeout($this->processTimeout);
+        $process->inheritEnvironmentVariables(true);
 
         return $process;
     }

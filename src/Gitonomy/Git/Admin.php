@@ -156,17 +156,18 @@ class Admin
         $commandline = array_merge(array($options['command'], $command), $args);
 
         // Backward compatible layer for Symfony Process < 4.0.
-        if (class_exists('Symfony\Component\Process\ProcessBuilder')) {
-            $commandline = implode(' ', array_map(
-                'Symfony\Component\Process\ProcessUtils::escapeArgument',
-                $commandline
-            ));
-        }
+//        if (class_exists('Symfony\Component\Process\ProcessBuilder')) {
+//            $commandline = implode(' ', array_map(
+//                'Symfony\Component\Process\ProcessUtils::escapeArgument',
+//                $commandline
+//            ));
+//        }
 
         $process = new Process($commandline);
         $process->setEnv($options['environment_variables']);
         $process->setTimeout($options['process_timeout']);
         $process->setIdleTimeout($options['process_timeout']);
+        $process->inheritEnvironmentVariables(true);
 
         return $process;
     }
